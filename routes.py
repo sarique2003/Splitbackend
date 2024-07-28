@@ -159,11 +159,12 @@ def split_expense():
         "pdf_file": pdf_file
     }
 
-    # Print individual expensesfor i, amount in enumerate(amounts):
+    # Print individual expenses for i, amount in enumerate(amounts):
     #    print(f"Person {i+1} owes: {amount}")
 
     return jsonify(response)
 
+#This will help the user download their expense report file
 @app.route('/download_report', methods=['GET'])
 @requires_auth
 def download_report():
@@ -182,23 +183,6 @@ def total_expense():
     else:
         return jsonify({"error": "Total bill not provided."}), 400
 
-@app.route('/individual_expenses', methods=['GET'])
-@requires_auth
-def individual_expenses():
-    total_bill = float(request.args.get('total_bill'))
-    num_friends = int(request.args.get('num_friends'))
-    split_method = request.args.get('split_method').strip().lower()
-
-    if split_method == "equal":
-        amounts = equal_split(total_bill, num_friends)
-    elif split_method == "diff":
-        amounts = diff_split(total_bill, num_friends)
-    elif split_method == "percentage":
-        amounts = percent_split(total_bill, num_friends)
-    else:
-        return jsonify({"error": "Invalid split method. Choose from 'Equal', 'Diff', 'Percentage'."}), 400
-
-    return jsonify({"amounts": amounts})
 
 if __name__ == '__main__':
     init_db()
