@@ -1,7 +1,8 @@
 # Splitbackend
 
 To run the backend services api, first install all dependencies from the requirments.txt file. if you wish to make any changes to the database make them to the database.py file.<br> 
-The user will register using the details and password required for authentication. Once the user has been authenticated other features like Report generation, and splitting via cases can be done.
+The user will register using the details and password required for authentication. Once the user has been authenticated other features like Report generation, and splitting via cases can be done.<br>
+Turn on the server by running the routes.py file and then send registration, retrieval and other requests.
 
 ### Usage and examples
 
